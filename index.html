@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="二十題雙空格拖曳練習，支援滑鼠、觸控、鍵盤、螢幕閱讀器與語音提示的 Python 基礎互動課程。" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Python 起步實驗室｜20 題雙空格互動入門</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23152443'/%3E%3Cpath d='M18 18h22v13H27a9 9 0 0 0-9 9V18Z' fill='%236ee7b7'/%3E%3Cpath d='M46 46H24V33h13a9 9 0 0 0 9-9v22Z' fill='%237aa7ff'/%3E%3Ccircle cx='35' cy='24' r='2.5' fill='%23152443'/%3E%3Ccircle cx='29' cy='40' r='2.5' fill='%23152443'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" id="skip-link" href="#lesson-title">跳到目前題目</a>
+
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="回到 Python 起步實驗室第一題">
+        <span class="brand-mark" aria-hidden="true">Py</span>
+        <span>Python 起步實驗室</span>
+      </a>
+      <div class="top-progress" aria-label="課程總進度">
+        <div class="progress-copy">
+          <span id="progress-label">第 1 題，共 20 題</span>
+          <strong id="progress-percent">0%</strong>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="課程完成進度" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0" aria-valuetext="已完成 0 題，共 20 題；目前第 1 題">
+          <span id="progress-fill"></span>
+        </div>
+      </div>
+      <button class="utility-button" id="accessibility-toggle" type="button" aria-expanded="false" aria-controls="accessibility-panel">
+        <span aria-hidden="true">Aa</span>
+        學習設定
+      </button>
+    </header>
+
+    <section class="accessibility-panel" id="accessibility-panel" aria-label="顯示、動態、語音與音效設定" hidden>
+      <div>
+        <strong>依你的方式學習</strong>
+        <p>調整文字、對比、動態、語音朗讀與答題音效。</p>
+      </div>
+      <div class="setting-actions">
+        <button class="setting-button" id="text-size-toggle" type="button" aria-pressed="false">放大文字</button>
+        <button class="setting-button" id="contrast-toggle" type="button" aria-pressed="false">高對比</button>
+        <button class="setting-button" id="motion-toggle" type="button" aria-pressed="false">減少動態</button>
+        <button class="setting-button" id="voice-toggle" type="button" aria-pressed="false">自動朗讀題目與提示</button>
+        <button class="setting-button" id="answer-sound-toggle" type="button" aria-pressed="true">答題音效：開啟</button>
+      </div>
+    </section>
+
+    <main id="app" class="app-shell">
+      <nav class="course-map" aria-label="Python 基礎學習路徑">
+        <div class="map-heading">
+          <p class="kicker">課程路徑</p>
+          <h2>從文字到迴圈</h2>
+          <p class="course-stat">5 個單元 · 20 題練習</p>
+        </div>
+        <ol id="unit-list" class="unit-list"></ol>
+        <div class="keyboard-note">
+          <span class="keycap" aria-hidden="true">Tab</span>
+          <span>搭配 Enter 或空白鍵即可作答</span>
+        </div>
+      </nav>
+
+      <section class="lesson-area" aria-labelledby="lesson-title">
+        <div class="lesson-meta">
+          <span id="unit-badge" class="unit-badge">字串 · 1／4</span>
+          <span id="difficulty-label">暖身</span>
+        </div>
+
+        <article class="lesson-card">
+          <div class="concept-strip">
+            <span class="concept-icon" aria-hidden="true">“ ”</span>
+            <div class="concept-content">
+              <p class="kicker">概念講解</p>
+              <h2 id="concept-title">本題核心概念</h2>
+              <p id="teaching-copy">Python 使用引號把文字包起來。被引號包住的內容叫做「字串」。</p>
+              <ol class="concept-points" aria-label="本題的兩個學習步驟">
+                <li><span>1</span><p id="concept-step-one">先辨認要放入第一個空格的資料。</p></li>
+                <li><span>2</span><p id="concept-step-two">再找出第二個空格需要的功能。</p></li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-heading-row">
+              <div class="question-copy">
+                <p class="question-count" id="question-count">練習 1</p>
+                <h1 id="lesson-title" tabindex="-1">哪一個是 Python 的字串？</h1>
+                <p id="question-prompt" class="prompt">選出被引號完整包住的內容。</p>
+              </div>
+              <div class="question-tools" aria-label="分段朗讀">
+                <p class="reader-kicker">分段朗讀</p>
+                <button class="read-button" id="read-question" type="button" aria-pressed="false" aria-label="朗讀題目" title="朗讀題目" data-speech-segment="題目" aria-describedby="speech-status">
+                  <svg class="speech-play-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+                    <path d="M11 5 6 9H2v6h4l5 4V5Z"></path>
+                    <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+                    <path d="M18.5 5.5a9 9 0 0 1 0 13"></path>
+                  </svg>
+                  <svg class="speech-stop-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" hidden>
+                    <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+                  </svg>
+                  <span class="read-label">朗讀題目</span>
+                </button>
+                <p class="speech-status" id="speech-status" role="status" aria-live="polite"></p>
+              </div>
+            </div>
+            <div id="code-example" class="code-example" hidden>
+              <div class="code-toolbar">
+                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+                <b>Python 程式碼</b>
+              </div>
+              <pre tabindex="0" aria-describedby="code-spoken"><code id="code-text"></code></pre>
+              <p class="sr-only" id="code-spoken"></p>
+            </div>
+
+            <aside class="learning-note" aria-labelledby="coach-title">
+              <div class="learning-note-heading">
+                <span class="note-mark" aria-hidden="true">i</span>
+                <h2 id="coach-title">學習策略</h2>
+              </div>
+              <p id="coach-copy">先觀察引號。程式設計常常是從辨認小線索開始。</p>
+              <p class="coach-tip">沒有計時，答錯也可以再試。</p>
+            </aside>
+
+            <form id="answer-form" novalidate>
+              <fieldset id="answer-fieldset" aria-labelledby="lesson-title" aria-describedby="question-prompt drop-instructions feedback-copy">
+                <legend class="answer-legend">
+                  <strong>完成兩個程式空格</strong>
+                  <span>拖曳答案卡，或先選卡片再選空格。</span>
+                </legend>
+                <ol class="answer-flow" aria-label="作答步驟">
+                  <li><span>1</span>選擇答案卡</li>
+                  <li><span>2</span>填入兩個空格</li>
+                  <li><span>3</span>檢查答案</li>
+                </ol>
+                <div class="answer-bank-heading">
+                  <strong id="cards-heading">答案卡</strong>
+                  <span aria-hidden="true">拖曳握把 ⠿</span>
+                </div>
+                <div id="answer-options" class="answer-options" role="group" aria-labelledby="cards-heading"></div>
+                <p id="selection-status" class="selection-status">尚未選取卡片；可直接拖曳，或先選卡片再選空格。</p>
+                <div class="drop-workspace" role="group" aria-labelledby="slot-group-title" aria-describedby="drop-instructions">
+                  <div class="slot-heading">
+                    <strong id="slot-group-title">答案空格</strong>
+                    <span id="slot-progress">已填 0／2</span>
+                  </div>
+                  <div id="answer-slots" class="answer-slots"></div>
+                  <div class="drop-footer">
+                    <p id="drop-instructions">可用滑鼠、觸控或鍵盤完成；按已填的空格可移除答案。</p>
+                    <button class="text-button" id="clear-all-answers" type="button" hidden>全部重選</button>
+                  </div>
+                </div>
+              </fieldset>
+
+              <details class="hint" id="hint-box">
+                <summary>我需要一個提示</summary>
+                <div class="hint-content">
+                  <p id="hint-copy">先找出有引號的字串，再找出顯示資料的函式。</p>
+                  <button class="hint-speech-button" id="speak-hint" type="button" aria-pressed="false" aria-label="朗讀提示" title="朗讀提示" data-speech-segment="提示" aria-describedby="speech-status">
+                    <svg class="speech-play-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+                      <path d="M11 5 6 9H2v6h4l5 4V5Z"></path>
+                      <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+                      <path d="M18.5 5.5a9 9 0 0 1 0 13"></path>
+                    </svg>
+                    <svg class="speech-stop-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" hidden>
+                      <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+                    </svg>
+                    <span class="read-label">朗讀提示</span>
+                  </button>
+                </div>
+              </details>
+
+              <div class="feedback" id="feedback" hidden>
+                <span class="feedback-symbol" id="feedback-symbol" aria-hidden="true"></span>
+                <div>
+                  <h2 id="feedback-title"></h2>
+                  <p id="feedback-copy"></p>
+                </div>
+              </div>
+
+              <section class="execution-result" id="execution-result" hidden aria-labelledby="execution-result-title">
+                <div class="execution-result-heading">
+                  <div>
+                    <p class="kicker">執行與驗證</p>
+                    <h2 id="execution-result-title">完整程式與執行結果</h2>
+                  </div>
+                </div>
+                <p id="execution-summary" class="execution-summary"></p>
+                <div class="execution-grid">
+                  <div class="result-pane">
+                    <h3>完整 Python 程式</h3>
+                    <pre tabindex="0"><code id="solved-code"></code></pre>
+                  </div>
+                  <div class="result-pane console-pane">
+                    <h3>終端機輸出</h3>
+                    <pre id="program-output" tabindex="0"></pre>
+                    <p id="runtime-state" class="runtime-state" hidden></p>
+                  </div>
+                </div>
+              </section>
+
+              <div class="lesson-actions">
+                <button class="primary-button" id="check-answer" type="submit">檢查兩個答案</button>
+                <button class="primary-button" id="next-question" type="button" hidden>下一題</button>
+              </div>
+            </form>
+          </div>
+        </article>
+      </section>
+
+    </main>
+
+    <section class="completion" id="completion" role="main" hidden tabindex="-1" aria-labelledby="completion-title">
+      <div class="completion-mark" aria-hidden="true">20／20</div>
+      <p class="kicker">路徑完成</p>
+      <h1 id="completion-title">你已經會讀懂 Python 的第一段程式了</h1>
+      <p>你練習了字串、變數、資料型態，以及用 <code>for</code> 和 <code>while</code> 重複工作。</p>
+      <button class="primary-button" id="restart-course" type="button">重新練習 20 題</button>
+    </section>
+
+    <div id="sr-announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
